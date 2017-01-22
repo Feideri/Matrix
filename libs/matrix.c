@@ -98,7 +98,11 @@ matrix multiplication(matrix m1, matrix m2){
 
     if(m1.cols != m2.rows){
         printf("Dimensions do not match for the multiplication.\n");
-        return generateFixedMatrix(1,1);
+        matrix ret = generateFixedMatrix(1,1);
+        ret.elements[0][0] = 0;
+
+        return ret;
+
     }
 
     matrix mul;
@@ -144,10 +148,11 @@ matrix multiplication(matrix m1, matrix m2){
     }
 
     for(int i = 0; i < mul.rows;i++)
-        for(int j = 0; j < mul.cols;j++)
+        for(int j = 0; j < mul.cols;j++){
+            mul.elements[i][j] = 0;
             for(int k = 0; k < m1.cols;k++)
-                mul.elements[i][j] += m1.elements[i][k] * m2.elements[k][j];
-
+                mul.elements[i][j] += (float) m1.elements[i][k] * (float) m2.elements[k][j];
+        }
     return mul;
 }
 
