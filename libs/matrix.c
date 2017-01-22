@@ -71,8 +71,8 @@ matrix generateMatrix(){
     return m;
 }
 
-matrix generateIdentity(unsigned int rows, unsigned int cols){
-    matrix m = generateFixedMatrix(rows,cols);
+matrix generateIdentity(unsigned int n){
+    matrix m = generateFixedMatrix(n, n);
 
     for(int i = 0; i < m.rows; i++)
         for(int k = 0; k < m.cols; k++){
